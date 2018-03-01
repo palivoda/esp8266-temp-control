@@ -1,0 +1,15 @@
+[submodule "lib/Arduino-PID-Library.git"]
+	path = lib/Arduino-PID-Library.git
+	url = https://github.com/br3ttb/Arduino-PID-Library.git
+[submodule "lib/NTC_MF52AT_10K.git"]
+	path = lib/NTC_MF52AT_10K.git
+	url = https://github.com/bigbarrelru/NTC_MF52AT_10K.git
+[submodule "lib/NTC_MF52AT_10K"]
+	path = lib/NTC_MF52AT_10K
+	url = https://github.com/bigbarrelru/NTC_MF52AT_10K.git
+[submodule "lib/JChristensenTimer.git"]
+	path = lib/JChristensenTimer.git
+	url = https://github.com/JChristensen/Timer.git
+[submodule "lib/JChristensenTimer"]
+	path = lib/JChristensenTimer
+	url = https://github.com/JChristensen/Timer.git
