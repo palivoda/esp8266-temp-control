@@ -13,3 +13,6 @@
 [submodule "lib/JChristensenTimer"]
 	path = lib/JChristensenTimer
 	url = https://github.com/JChristensen/Timer.git
+[submodule "lib/Arduino-PID-Library"]
+	path = lib/Arduino-PID-Library
+	url = https://github.com/br3ttb/Arduino-PID-Library.git
