@@ -1,6 +1,7 @@
 #ifndef Config_h
 #define Config_h
 
+#include <Arduino.h>
 #include <EEPROM.h>
 
 #define CONFG_VERSION 1

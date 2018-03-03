@@ -1,5 +1,17 @@
 #include "config.h"
 
+#define READ_EEPROM(CVAR)\
+CVAR = EEPROM.read(pos);\
+pos += sizeof(CVAR);\
+Serial.print("CVAR=");\
+Serial.print(CVAR);
+
+#define WRITE_EEPROM(CVAR)\
+EEPROM.write(pos, CVAR);\
+pos += sizeof(CVAR);\
+Serial.print("CVAR=");\
+Serial.print(CVAR);
+
 int Config::reset() {
   #ifdef CONFIG_DEBUG
     Serial.print("EEPROM reset");
@@ -25,19 +37,8 @@ int Config::read() {
   if (ConfigVersion != CONFG_VERSION) return reset();
   pos += sizeof(ConfigVersion);
 
-  SetTemp = EEPROM.read(pos);
-  pos += sizeof(SetTemp);
-  #ifdef CONFIG_DEBUG
-    Serial.print("SetTemp=");
-    Serial.print(SetTemp);
-  #endif
-
-  MinReturnTemp = EEPROM.read(pos);
-  pos += sizeof(MinReturnTemp);
-  #ifdef CONFIG_DEBUG
-    Serial.print("MinReturnTemp=");
-    Serial.print(MinReturnTemp);
-  #endif
+  READ_EEPROM(SetTemp);
+  READ_EEPROM(MinReturnTemp);
 
   return pos;
 }
@@ -49,19 +50,8 @@ int  Config::write() {
 
   int pos = EEPROM_START_ADDRESS;
 
-  EEPROM.write(pos, SetTemp);
-  pos += sizeof(SetTemp);
-  #ifdef CONFIG_DEBUG
-    Serial.print("SetTemp=");
-    Serial.print(SetTemp);
-  #endif
-
-  EEPROM.write(pos, MinReturnTemp);
-  pos += sizeof(MinReturnTemp);
-  #ifdef CONFIG_DEBUG
-    Serial.print("MinReturnTemp=");
-    Serial.print(MinReturnTemp);
-  #endif
+  WRITE_EEPROM(SetTemp);
+  WRITE_EEPROM(MinReturnTemp);
 
   EEPROM.commit();
 
