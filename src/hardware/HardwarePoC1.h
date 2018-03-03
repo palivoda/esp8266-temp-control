@@ -1,16 +1,15 @@
 #include <Arduino.h>
 #include <Timer.h>
-#include "NtcMf52at10k.h"
 
-#ifndef HardwareControllerPoC1_hpp
-#define HardwareControllerPoC1_hpp
+#ifndef HardwarePoC1_hpp
+#define HardwarePoC1_hpp
 
-#define PIN_MOTOR D0
-#define PIN_VALVE_OPEN D5
-#define PIN_VALVE_CLOSE D6
-#define PIN_AMPS D7
-#define PIN_TEMP_FEED 1
-#define PIN_TEMP_RETURN 2
+#define PIN_VALVE_OPEN D1
+#define PIN_VALVE_CLOSE D2
+#define PIN_MOTOR D3
+#define PIN_AMPS D4
+#define PIN_TEMP_FEED D8
+#define PIN_TEMP_RETURN D7
 
 enum VALVE_STATE {
   VALVE_OPENING,
@@ -18,18 +17,15 @@ enum VALVE_STATE {
   VALVE_STOPPED
 };
 
-class HardwareControllerPoC1 {
+class HardwarePoC1 {
 
   private:
 
     bool motorActive;
     VALVE_STATE valveAction = VALVE_STOPPED;
-    long ValveState = 0;
-    NtcMf52at10k feedTemp = NtcMf52at10k(PIN_TEMP_FEED);
-    NtcMf52at10k returnTemp = NtcMf52at10k(PIN_TEMP_RETURN);
+    int valvePosition = 0;
     Timer valveTimer;
     Timer motorTimer;
-    float _ACS712(byte pin);
 
    public:
 
@@ -41,6 +37,7 @@ class HardwareControllerPoC1 {
      void closeValve(long ms);
      static void stopValve();
      VALVE_STATE readValveAction();
+     int readValvePosition();
 
      void startMotor(long ms);
      static void stopMotor();
