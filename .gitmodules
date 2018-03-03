@@ -7,3 +7,6 @@
 [submodule "lib/NTC_MF52AT_10K-palivoda"]
 	path = lib/NTC_MF52AT_10K-palivoda
 	url = https://github.com/palivoda/NTC_MF52AT_10K.git
+[submodule "lib/arduino-interface"]
+	path = lib/arduino-interface
+	url = https://github.com/palivoda/arduino-interface.git
