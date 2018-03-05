@@ -1,15 +1,16 @@
 #include <Arduino.h>
 #include <Timer.h>
+#include <DS18B20.h>
 
 #ifndef HardwarePoC1_hpp
 #define HardwarePoC1_hpp
 
-#define PIN_VALVE_OPEN D1
-#define PIN_VALVE_CLOSE D2
-#define PIN_MOTOR D3
-#define PIN_AMPS D4
-#define PIN_TEMP_FEED D8
-#define PIN_TEMP_RETURN D7
+#define PIN_VALVE_OPEN D7
+#define PIN_VALVE_CLOSE D6
+#define PIN_MOTOR D8
+#define PIN_AMPS D5
+#define PIN_TEMP_FEED D2
+#define PIN_TEMP_RETURN D1
 
 enum VALVE_STATE {
   VALVE_OPENING,
@@ -23,7 +24,7 @@ class HardwarePoC1 {
 
     bool motorActive;
     VALVE_STATE valveAction = VALVE_STOPPED;
-    int valvePosition = 0;
+    long valvePosition = 0;
     Timer valveTimer;
     Timer motorTimer;
 
@@ -37,15 +38,18 @@ class HardwarePoC1 {
      void closeValve(long ms);
      static void stopValve();
      VALVE_STATE readValveAction();
-     int readValvePosition();
+     long readValvePosition();
 
+     void startMotor();
      void startMotor(long ms);
      static void stopMotor();
      bool readMotor();
-     float readMotorAmps();
+     double readMotorAmps();
 
-     float readFeedTemp();
-     float readReturnTemp();
+     double readFeedTemp();
+     double readReturnTemp();
 };
+
+static HardwarePoC1 HW;
 
 #endif
