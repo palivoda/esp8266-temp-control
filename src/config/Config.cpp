@@ -39,6 +39,8 @@ int Config::read() {
 
   READ_EEPROM(SetTemp);
   READ_EEPROM(MinReturnTemp);
+  READ_EEPROM(ValveDuration);
+  READ_EEPROM(TempHisteresis);
 
   return pos;
 }
@@ -52,6 +54,8 @@ int  Config::write() {
 
   WRITE_EEPROM(SetTemp);
   WRITE_EEPROM(MinReturnTemp);
+  WRITE_EEPROM(ValveDuration);
+  WRITE_EEPROM(TempHisteresis);
 
   EEPROM.commit();
 

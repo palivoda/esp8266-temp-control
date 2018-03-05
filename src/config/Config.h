@@ -4,18 +4,22 @@
 #include <Arduino.h>
 #include <EEPROM.h>
 
-#define CONFG_VERSION 1
-#define EEPROM_START_ADDRESS 0
+#define CONFG_VERSION 2
+#define EEPROM_START_ADDRESS 1
 
 class Config {
 public:
       int ConfigVersion = CONFG_VERSION;
-      int SetTemp = 23;
-      int MinReturnTemp = 5;
+      double SetTemp = 23;
+      double MinReturnTemp = 5;
+      long ValveDuration = 12000;
+      float TempHisteresis = 1;
 
       int reset();
       int read();
       int write();
 };
+
+static Config CONFIG;
 
 #endif
