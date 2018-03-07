@@ -16,3 +16,6 @@
 [submodule "lib/EASTL"]
 	path = lib/EASTL
 	url = https://github.com/electronicarts/EASTL.git
+[submodule "lib/blynk-library"]
+	path = lib/blynk-library
+	url = https://github.com/blynkkk/blynk-library.git
