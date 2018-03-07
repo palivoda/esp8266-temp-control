@@ -13,3 +13,6 @@
 [submodule "lib/OneWire"]
 	path = lib/OneWire
 	url = https://github.com/PaulStoffregen/OneWire.git
+[submodule "lib/EASTL"]
+	path = lib/EASTL
+	url = https://github.com/electronicarts/EASTL.git
